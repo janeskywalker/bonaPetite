@@ -2,7 +2,6 @@ const state = {
 
 }
 
-
 const navLinks = document.querySelectorAll('nav li');
 const form = document.querySelector("form");
 // ADD NAV ACTIVE CLASS
