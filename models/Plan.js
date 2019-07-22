@@ -8,6 +8,6 @@ const PlanSchema = new Schema({
   Calories:String
 });
 
-const Plan = mongoose.model('Plan',ItemSchema);
+const Plan = mongoose.model('Plan',PlanSchema);
 
 module.exports = Plan;
