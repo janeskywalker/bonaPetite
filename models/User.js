@@ -10,6 +10,6 @@ const UserSchema = new Schema({
   plan: {Plan.schema}
 });
 
-const User = mongoose.model('User',ItemSchema);
+const User = mongoose.model('User',UserSchema);
 
 module.exports = User;
