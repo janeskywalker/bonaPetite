@@ -7,6 +7,9 @@ const newUser = (req, res) => {
 
 // post create new User
 const createUser = (req, res) => {
+
+  console.log(req.body)
+  
   const errors = [];
   if (!req.body.name) {
     errors.push({
@@ -29,12 +32,7 @@ const createUser = (req, res) => {
     })
   };
 
-  if (!req.body.age) {
-    errors.push({
-      field: 'age',
-      message: 'Please enter your age'
-    })
-  };
+
 
   // Generate Hash Salt
   bcrypt.genSalt(10, (err, salt) => {
@@ -65,6 +63,7 @@ const createUser = (req, res) => {
         });
 
         // Redirect to Login page on Success
+        console.log('added user');
         res.redirect('/accounts/login');
       });
     });
