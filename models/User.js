@@ -3,13 +3,29 @@ const Schema = mongoose.Schema;
 const Plan = require('./Plan');
 
 const UserSchema = new Schema({
-  name:String,
-  email:String,
-  password:String,
-  age:Number,
-  plan: {Plan.schema}
+  name: {
+    type: String,
+    required: true
+  },
+  email: {
+    type: String,
+    required: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  age: {
+    type: Number,
+    required: true
+  },
+  plan: [Plan.schema],
+  sign_up_date: {
+    type: Date,
+    default: Date.now
+  }
 });
 
-const User = mongoose.model('User',ItemSchema);
+const User = mongoose.model('User', UserSchema);
 
 module.exports = User;

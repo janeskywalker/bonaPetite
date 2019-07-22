@@ -4,10 +4,10 @@ const Item = require('./Item');
 
 const PlanSchema = new Schema({
   title:String,
-  items:[Items.schema],
+  items:[Item.schema],
   Calories:String
 });
 
-const Plan = mongoose.model('Plan',ItemSchema);
+const Plan = mongoose.model('Plan',PlanSchema);
 
 module.exports = Plan;
