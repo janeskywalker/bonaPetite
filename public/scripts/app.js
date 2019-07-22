@@ -11,7 +11,6 @@ navLinks.forEach(link => {
   }
 });
 
-const form = document.querySelector('form');
 
 form && form.addEventListener('submit', (e)=> {
   [...document.querySelectorAll(`.alert`)].forEach(alert => {
