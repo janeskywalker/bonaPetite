@@ -18,7 +18,7 @@ app.get('/',(req,res)=> {
   res.render('index');
 });
 
-// app.use('/signup',routes.signUp);
+app.use('/accounts',routes.signUp);
 // app.use('/profile',routes.profile);
 
 app.listen(PORT, ()=> {
