@@ -15,10 +15,6 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  age: {
-    type: Number,
-    required: true
-  },
   plan: [Plan.schema],
   sign_up_date: {
     type: Date,

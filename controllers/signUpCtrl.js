@@ -8,8 +8,8 @@ const newUser = (req, res) => {
 // post create new User
 const createUser = (req, res) => {
 
-  console.log(req.body)
-  
+  console.log("req.body", req.body)
+
   const errors = [];
   if (!req.body.name) {
     errors.push({
@@ -53,17 +53,22 @@ const createUser = (req, res) => {
       // Create New User Object and add hashed password
       const newUser = req.body;
       newUser.password = hash;
+      console.log({newUser})
 
       // Create New User record in database
       db.User.create(newUser, (err, savedUser) => {
-        if (err) return res.render('accounts/signup', {
-          errors: [{
-            message: 'Something went wrong, please try again'
-          }]
-        });
-
+        if (err) {
+          console.log(err)
+          res.render('accounts/signup', {
+            errors: [{
+              message: 'Something went wrong, please try again'
+            }]
+          })
+        }
+        
+      
         // Redirect to Login page on Success
-        console.log('added user');
+        console.log({savedUser});
         res.redirect('/accounts/login');
       });
     });

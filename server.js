@@ -5,6 +5,7 @@ const session = require('express-session');
 
 const db = require('./models')
 console.log(db)
+
 // Instance Modules
 const app = express();
 const routes = require('./routes');
