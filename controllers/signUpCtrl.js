@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../models');
 
 const newUser = (req, res) => {
-  res.render('accounts/signUp');
+  res.render('accounts/signup');
 }
 
 // post create new User
@@ -38,7 +38,7 @@ const createUser = (req, res) => {
 
   // Generate Hash Salt
   bcrypt.genSalt(10, (err, salt) => {
-    if (err) return res.render('accounts/signUp', {
+    if (err) return res.render('accounts/signup', {
       errors: [{
         message: 'Something went wrong, please try again'
       }]
@@ -46,7 +46,7 @@ const createUser = (req, res) => {
 
     // Hash User Password with generated Salt
     bcrypt.hash(req.body.password, salt, (err, hash) => {
-      if (err) return res.render('accounts/signUp', {
+      if (err) return res.render('accounts/signup', {
         errors: [{
           message: 'Something went wrong, please try again'
         }]
@@ -58,7 +58,7 @@ const createUser = (req, res) => {
 
       // Create New User record in database
       db.User.create(newUser, (err, savedUser) => {
-        if (err) return res.render('accounts/signUp', {
+        if (err) return res.render('accounts/signup', {
           errors: [{
             message: 'Something went wrong, please try again'
           }]
