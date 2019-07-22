@@ -4,7 +4,7 @@ const Item = require('./Item');
 
 const PlanSchema = new Schema({
   title:String,
-  items:[Items.schema],
+  items:[Item.schema],
   Calories:String
 });
 

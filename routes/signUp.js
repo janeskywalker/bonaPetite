@@ -2,9 +2,8 @@ const express = require('express')
 
 const router = express.Router()
 
-// const ctrls = require('../controllers')
+const ctrls = require('../controllers')
 
-// router.get('/', ctrls.signUpCtrl)
-
+router.get('/signup', ctrls.signUpCtrl.newUser)
 
 module.exports = router

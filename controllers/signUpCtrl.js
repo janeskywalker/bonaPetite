@@ -157,7 +157,7 @@ const deleteSession = (req, res) => {
 }
 
 
-}
+
 
 module.exports = {
   createUser,
