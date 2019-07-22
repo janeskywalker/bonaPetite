@@ -4,6 +4,7 @@ const express = require('express');
 // Instance Modules
 const app = express();
 const routes = require('./routes');
+app.set('view engine','ejs');
 
 // Global Variables
 const PORT = 3000;
@@ -13,7 +14,9 @@ app.use(express.json());
 
 
 //main page
-app.use('/',routes.main);
+app.get('/',(req,res)=> {
+  res.render('index');
+});
 
 // app.use('/signup',routes.signUp);
 // app.use('/profile',routes.profile);
