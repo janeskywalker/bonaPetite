@@ -58,7 +58,6 @@ app.use('/profile',routes.profile);
 
 
 
-
 // ------------------------------- START SERVER  -------------------------------- //
 app.listen(PORT, ()=> {
   console.log("Server is working");
