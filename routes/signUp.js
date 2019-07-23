@@ -4,13 +4,15 @@ const router = express.Router()
 
 const ctrls = require('../controllers')
 
+// get
 router.get('/signup', ctrls.signUpCtrl.newUser)
+router.get('/login', ctrls.accountCtrl.newSession);
+router.get('/logout', ctrls.accountCtrl.deleteSession);
 
-router.get('/login', ctrls.signUpCtrl.newSession);
-
-//router.get('/accounts/login',ctrls.signUpCtrl.newSession);
-
+// post
 router.post('/signup', ctrls.signUpCtrl.createUser);
+// when log in succeed, start session
+router.post('/login', ctrls.accountCtrl.createSession);
 
 
 

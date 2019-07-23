@@ -1,4 +1,5 @@
 module.exports = {
   profileCtrl: require('./profileCtrl'),
-  signUpCtrl: require('./signUpCtrl')
+  signUpCtrl: require('./signUpCtrl'),
+  accountCtrl: require('./accountCtrl')
 };
