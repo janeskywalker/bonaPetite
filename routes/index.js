@@ -1,6 +1,6 @@
 
 module.exports = {
-    signUp: require('./signup'),
+    signUp: require('./accounts'),
     // main: require('./main'),
     profile: require('./profile'),
 }

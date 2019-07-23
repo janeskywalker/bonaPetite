@@ -51,7 +51,7 @@ app.get('/',(req,res)=> {
 app.use('/accounts',routes.signUp);
 
 // profile routes
-// app.use('/profile',routes.profile);
+app.use('/profile',routes.profile);
 
 
 
