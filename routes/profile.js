@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const ctrl = require('../controllers');
+const ctrls = require('../controllers');
 
-router.get('/', ctrl.profileCtrl.profile);
+
+router.get('/', ctrls.profileCtrl.profile);
+
 
 module.exports = router;
