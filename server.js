@@ -38,6 +38,8 @@ app.get('/',(req,res)=> {
   res.render('index');
 });
 
+
+
 app.use('/accounts',routes.signUp);
 // app.use('/profile',routes.profile);
 

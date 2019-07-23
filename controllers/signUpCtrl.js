@@ -79,6 +79,7 @@ const createUser = (req, res) => {
 // --------------------- LOGIN -------------------- //
 
 const newSession = (req, res) => {
+  console.log('rendering login')
   res.render('accounts/login');
 }
 
