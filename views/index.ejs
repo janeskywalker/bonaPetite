@@ -4,23 +4,15 @@
     <meta charset="utf-8">
     <title>bonaPetite</title>
   </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="/css/styles.css">
   <body>
-    <section class="login">
-      <div class="container">
-        <h1>Log In</h1>
-        <form action="/accounts/login" method="POST">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" value="<%= typeof user !== 'undefined' ? user.email : '' %>"  />
-          </div>
-          <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
-          </div>
-          <input type="submit" value="Log In" />
-          <button type="button" name="button" >Sign up</button>
-        </form>
-      </div>
-    </section>
+        <img src="https://images.unsplash.com/photo-1472926373053-51b220987527?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" id="bannerImg"alt="banner"/>
+        <div id="navigation">
+        <button type="button" class="navButton" name="button"><a href="/accounts/login">Log In</a></button>
+        <button type="button" class="navButton" name="button"><a href="/accounts/signup">Sign Up</a></button>
+        </div>
   </body>
 </html>

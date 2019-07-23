@@ -6,8 +6,7 @@ const profile = (req,res) => {
   }
 
   db.User.findById(req.session.currentUser._id, (error, foundUser) => {
-    if (error) return res.render('index',{errors: [{message:'Something went wrong, please try again'}]});
-
+    if (error) return res.render('index',{errors: [{message:'User id is not found in database.'}]});
     res.render('profile/show', {currentUser: foundUser});
   });
 
