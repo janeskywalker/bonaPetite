@@ -1,5 +1,5 @@
 const db = require('../models');
-
+const bcrypt = require('bcryptjs');
 // --------------------- LOGIN -------------------- //
 
 const newSession = (req, res) => {
