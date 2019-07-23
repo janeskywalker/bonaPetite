@@ -14,6 +14,4 @@ router.post('/signup', ctrls.accountCtrl.createUser);
 // when log in succeed, start session
 router.post('/login', ctrls.accountCtrl.createSession);
 
-
-
 module.exports = router

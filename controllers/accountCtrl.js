@@ -1,12 +1,10 @@
 const db = require('../models');
 const bcrypt = require('bcryptjs');
-// --------------------- LOGIN -------------------- //
 
+// --------------------- LOGIN -------------------- //
 const newSession = (req, res) => {
-  console.log('rendering login')
   res.render('accounts/login');
 }
-
 
 const createSession = (req, res) => {
   const errors = [];
@@ -73,6 +71,8 @@ const createSession = (req, res) => {
   });
 }
 
+
+//logout
 const deleteSession = (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.render('profile/show', {
@@ -85,11 +85,11 @@ const deleteSession = (req, res) => {
   res.redirect('/accounts/login')
 }
 
+
+// signup
 const newUser = (req, res) => {
   res.render('accounts/signup');
 }
-
-
 // post create new User
 const createUser = (req, res) => {
 
@@ -117,8 +117,6 @@ const createUser = (req, res) => {
     })
   };
 
-
-
   // Generate Hash Salt
   bcrypt.genSalt(10, (err, salt) => {
     if (err) return res.render('accounts/signup', {
@@ -138,7 +136,9 @@ const createUser = (req, res) => {
       // Create New User Object and add hashed password
       const newUser = req.body;
       newUser.password = hash;
-      console.log({newUser})
+      console.log({
+        newUser
+      })
 
       // Create New User record in database
       db.User.create(newUser, (err, savedUser) => {
@@ -151,9 +151,7 @@ const createUser = (req, res) => {
           })
         }
 
-
         // Redirect to Login page on Success
-        console.log({savedUser});
         res.redirect('/accounts/login');
       });
     });

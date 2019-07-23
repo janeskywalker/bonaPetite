@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 // use the express Session
 app.use(session({
-  secret: 'thi is used to encryp the sesscion obj!',
+  secret: 'watashiwa secret',
   resave: false,
   saveUninitialized: false // Only save the session if a property has been added to req.session
 }));
@@ -46,11 +46,10 @@ app.get('/',(req,res)=> {
 });
 
 // acountes routes
-app.use('/accounts',routes.signUp);
+app.use('/accounts',routes.accounts);
 
 // profile routes
 app.use('/profile',routes.profile);
-
 
 
 // ------------------------------- API ENDPOINTS -------------------------------- //

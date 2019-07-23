@@ -157,8 +157,18 @@ li.active a, nav li:hover a {
   padding: 20px 0 0 0 ;
 }
 
-
-
+/* index page banner properties  */
+#bannerImg {
+  height: 380px;
+  width: 600px;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+  }
+#navigation {
+  display:flex;
+  justify-content: center;
+}
 
 /* FOOTER */
 
