@@ -45,6 +45,10 @@ app.get('/',(req,res)=> {
   res.render('index');
 });
 
+app.get('/search',(req,res)=> {
+  res.render('profile/search');
+})
+
 // acountes routes
 app.use('/accounts',routes.accounts);
 
