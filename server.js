@@ -39,8 +39,6 @@ app.use(session({
 //   console.table({ url, method, requestedAt });
 //   next();
 // });
-
-
 // ------------------------------- HTML ENDPOINTS -------------------------------- //
 //main page
 app.get('/',(req,res)=> {
@@ -55,6 +53,7 @@ app.use('/profile',routes.profile);
 
 
 // ------------------------------- API ENDPOINTS -------------------------------- //
+
 
 
 
