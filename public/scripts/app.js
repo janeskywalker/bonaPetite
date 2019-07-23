@@ -37,3 +37,27 @@ document.addEventListener('focus',(e) => {
   const inputMessage = document.querySelector(`.alert-${e.target.type}`);
     inputMessage && inputMessage.parentNode.removeChild(inputMessage);
 }, true);
+
+
+
+
+//-----------event listener --------------//
+
+const addItemInput = document.querySelector('#add-item-input')
+
+const addItemButton = document.querySelector('#add-item-button')
+
+console.log({addItemInput, addItemButton})
+
+addItemButton.addEventListener('click', (evt)=>{
+    console.log(addItemInput.value)
+})
+
+const planContainer = document.querySelector('#plan-container')
+
+planContainer.innerText = addItemInput.value
+
+console.log(planContainer)
+
+
+
