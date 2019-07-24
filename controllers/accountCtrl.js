@@ -1,6 +1,11 @@
-const bcrypt = require('bcryptjs');
 const db = require('../models');
+const bcrypt = require('bcryptjs');
 
+// --------------------- LOGIN -------------------- //
+
+
+// signup
+// serve New User Form
 const newUser = (req, res) => {
   res.render('accounts/signup');
 }
@@ -32,8 +37,6 @@ const createUser = (req, res) => {
     })
   };
 
-
-
   // Generate Hash Salt
   bcrypt.genSalt(10, (err, salt) => {
     if (err) return res.render('accounts/signup', {
@@ -53,7 +56,9 @@ const createUser = (req, res) => {
       // Create New User Object and add hashed password
       const newUser = req.body;
       newUser.password = hash;
-      console.log({newUser})
+      console.log({
+        newUser
+      })
 
       // Create New User record in database
       db.User.create(newUser, (err, savedUser) => {
@@ -65,10 +70,8 @@ const createUser = (req, res) => {
             }]
           })
         }
-        
-      
+
         // Redirect to Login page on Success
-        console.log({savedUser});
         res.redirect('/accounts/login');
       });
     });
@@ -76,14 +79,15 @@ const createUser = (req, res) => {
 };
 
 
-// --------------------- LOGIN -------------------- //
-
+// login
+// serve the login page 
 const newSession = (req, res) => {
-  console.log('rendering login')
   res.render('accounts/login');
 }
 
 
+// POST Login
+// authentication, verify if the user is the the one claimed
 const createSession = (req, res) => {
   const errors = [];
 
@@ -125,30 +129,58 @@ const createSession = (req, res) => {
     }
 
     bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
-      if (err) return res.render('accounts/login', {
-        errors: [{
-          message: 'Something went wrong, please try again'
-        }]
-      });
+      db.User.update({ _id: foundUser._id }, { plans: [{
+        title:"lunch",
+        items:[
+          {
+            name:"chicken",
+            carbohydrate:"15g",
+            fat:"1g"
+          },
+          {
+            name:"ketchup",
+            fat:"0g",
+            carbohydrate:"1g"
+          }
+        ],
+        Calories:"2kcal"
+      }, {
+        title:"dinner",
+        items:[],
+        Calories:"3kcal"
+      }]}, (err, raw) => {
+        console.log('err: ', err)
+        console.log('raw: ', raw)
 
-      if (isMatch) {
-        req.session.currentUser = {
-          _id: foundUser._id,
-          name: foundUser.name,
-          email: foundUser.email
-        };
-        return res.redirect('/profile');
-      } else {
-        return res.render('accounts/login', {
+        if (err) return res.render('accounts/login', {
           errors: [{
-            message: 'Username or password is incorrect'
+            message: 'Something went wrong, please try again'
           }]
-        })
-      }
+        });
+  
+        if (isMatch) {
+          req.session.currentUser = {
+            _id: foundUser._id,
+            name: foundUser.name,
+            email: foundUser.email
+          };
+
+          // verified user, serve profile page 
+          return res.redirect('/profile');
+        } else {
+          return res.render('accounts/login', {
+            errors: [{
+              message: 'Username or password is incorrect'
+            }]
+          })
+        }
+      })
     });
   });
 }
 
+
+//logout
 const deleteSession = (req, res) => {
   req.session.destroy((err) => {
     if (err) return res.render('profile/show', {
@@ -164,10 +196,11 @@ const deleteSession = (req, res) => {
 
 
 
+
 module.exports = {
-  createUser,
   newUser,
   newSession,
   createSession,
   deleteSession,
+  createUser
 };

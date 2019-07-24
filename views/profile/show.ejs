@@ -1,0 +1,23 @@
+<% include ../partials/_head.ejs %>
+
+  <section class="profile login">
+    <div class="">
+      <h1>Welcome <%= currentUser && currentUser.name %></h1>
+      <h1><%= currentUser.plan %></h1>
+    </div>
+
+    <!-- user click on this link to make a new plan  -->
+    <a class="create-new-plan-link" href="/profile/new">Create a new plan</a>
+
+      <% for (const plan of currentUser.plans) { %>
+
+        <!-- render plans -->
+        <div class="plan">
+          <h3><%= plan.title %></h3>
+        </div>
+  
+      <% } %>
+
+  </section>
+
+<% include ../partials/_footer.ejs %>

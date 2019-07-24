@@ -15,7 +15,17 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  plan: [Plan.schema],
+  // embeded 
+  plans: [Plan.schema],
+
+  // plans: [
+	// 	{
+	// 		type: Schema.Types.ObjectId,
+	// 		// collection 
+	// 		ref: 'Plan'
+	// 	}
+  // ],
+  
   sign_up_date: {
     type: Date,
     default: Date.now
