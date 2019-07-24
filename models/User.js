@@ -15,6 +15,7 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  // embeded 
   plans: [Plan.schema],
 
   // plans: [
@@ -23,7 +24,8 @@ const UserSchema = new Schema({
 	// 		// collection 
 	// 		ref: 'Plan'
 	// 	}
-	// ],
+  // ],
+  
   sign_up_date: {
     type: Date,
     default: Date.now

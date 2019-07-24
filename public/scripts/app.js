@@ -12,7 +12,6 @@ navLinks.forEach(link => {
   }
 });
 
-
 form && form.addEventListener('submit', (e)=> {
   [...document.querySelectorAll(`.alert`)].forEach(alert => {
       alert.parentNode.removeChild(alert);

@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const ctrls = require('../controllers');
 
-
-router.get('/new', ctrls.profileCtrl.newPlan);
 router.get('/', ctrls.profileCtrl.profile);
-
+router.get('/newplan', ctrls.profileCtrl.newPlan);
 
 module.exports = router;

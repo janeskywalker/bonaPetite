@@ -2,10 +2,92 @@ const db = require('../models');
 const bcrypt = require('bcryptjs');
 
 // --------------------- LOGIN -------------------- //
+
+
+// signup
+// serve New User Form
+const newUser = (req, res) => {
+  res.render('accounts/signup');
+}
+
+// post create new User
+const createUser = (req, res) => {
+
+  console.log("req.body", req.body)
+
+  const errors = [];
+  if (!req.body.name) {
+    errors.push({
+      field: 'name',
+      message: 'Please enter your name'
+    })
+  };
+
+  if (!req.body.email) {
+    errors.push({
+      field: 'email',
+      message: 'Please enter your email'
+    })
+  };
+
+  if (!req.body.password) {
+    errors.push({
+      field: 'password',
+      message: 'Please enter your password'
+    })
+  };
+
+  // Generate Hash Salt
+  bcrypt.genSalt(10, (err, salt) => {
+    if (err) return res.render('accounts/signup', {
+      errors: [{
+        message: 'Something went wrong, please try again'
+      }]
+    });
+
+    // Hash User Password with generated Salt
+    bcrypt.hash(req.body.password, salt, (err, hash) => {
+      if (err) return res.render('accounts/signup', {
+        errors: [{
+          message: 'Something went wrong, please try again'
+        }]
+      });
+
+      // Create New User Object and add hashed password
+      const newUser = req.body;
+      newUser.password = hash;
+      console.log({
+        newUser
+      })
+
+      // Create New User record in database
+      db.User.create(newUser, (err, savedUser) => {
+        if (err) {
+          console.log(err)
+          res.render('accounts/signup', {
+            errors: [{
+              message: 'Something went wrong, please try again'
+            }]
+          })
+        }
+
+        // Redirect to Login page on Success
+        res.redirect('/accounts/login');
+      });
+    });
+  });
+};
+
+
+// login
+// serve the login page 
 const newSession = (req, res) => {
   res.render('accounts/login');
 }
 
+
+// POST Login
+// authentication, verify if the user is the the one claimed
 const createSession = (req, res) => {
   const errors = [];
 
@@ -82,6 +164,8 @@ const createSession = (req, res) => {
             name: foundUser.name,
             email: foundUser.email
           };
+
+          // verified user, serve profile page 
           return res.redirect('/profile');
         } else {
           return res.render('accounts/login', {
@@ -110,83 +194,13 @@ const deleteSession = (req, res) => {
 }
 
 
-// signup
-const newUser = (req, res) => {
-  res.render('accounts/signup');
-}
-// post create new User
-const createUser = (req, res) => {
 
-  console.log("req.body", req.body)
-
-  const errors = [];
-  if (!req.body.name) {
-    errors.push({
-      field: 'name',
-      message: 'Please enter your name'
-    })
-  };
-
-  if (!req.body.email) {
-    errors.push({
-      field: 'email',
-      message: 'Please enter your email'
-    })
-  };
-
-  if (!req.body.password) {
-    errors.push({
-      field: 'password',
-      message: 'Please enter your password'
-    })
-  };
-
-  // Generate Hash Salt
-  bcrypt.genSalt(10, (err, salt) => {
-    if (err) return res.render('accounts/signup', {
-      errors: [{
-        message: 'Something went wrong, please try again'
-      }]
-    });
-
-    // Hash User Password with generated Salt
-    bcrypt.hash(req.body.password, salt, (err, hash) => {
-      if (err) return res.render('accounts/signup', {
-        errors: [{
-          message: 'Something went wrong, please try again'
-        }]
-      });
-
-      // Create New User Object and add hashed password
-      const newUser = req.body;
-      newUser.password = hash;
-      console.log({
-        newUser
-      })
-
-      // Create New User record in database
-      db.User.create(newUser, (err, savedUser) => {
-        if (err) {
-          console.log(err)
-          res.render('accounts/signup', {
-            errors: [{
-              message: 'Something went wrong, please try again'
-            }]
-          })
-        }
-
-        // Redirect to Login page on Success
-        res.redirect('/accounts/login');
-      });
-    });
-  });
-};
 
 
 module.exports = {
+  newUser,
   newSession,
   createSession,
   deleteSession,
-  newUser,
   createUser
 };
