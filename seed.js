@@ -19,18 +19,20 @@ const items = [{
 
 const plans = [{
   title:"lunch",
-  items:[{
-    name:"chicken",
-    carbohydrate:"15g",
-    fat:"1g"
-  },
+  items:[
+    {
+      name:"chicken",
+      carbohydrate:"15g",
+      fat:"1g"
+    },
     {
       name:"ketchup",
       fat:"0g",
       carbohydrate:"1g"
-    }],
-    Calories:"2kcal"
-},{
+    }
+  ],
+  Calories:"2kcal"
+}, {
   title:"dinner",
   items:[],
   Calories:"3kcal"

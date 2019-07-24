@@ -47,26 +47,50 @@ const createSession = (req, res) => {
     }
 
     bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
-      if (err) return res.render('accounts/login', {
-        errors: [{
-          message: 'Something went wrong, please try again'
-        }]
-      });
+      db.User.update({ _id: foundUser._id }, { plans: [{
+        title:"lunch",
+        items:[
+          {
+            name:"chicken",
+            carbohydrate:"15g",
+            fat:"1g"
+          },
+          {
+            name:"ketchup",
+            fat:"0g",
+            carbohydrate:"1g"
+          }
+        ],
+        Calories:"2kcal"
+      }, {
+        title:"dinner",
+        items:[],
+        Calories:"3kcal"
+      }]}, (err, raw) => {
+        console.log('err: ', err)
+        console.log('raw: ', raw)
 
-      if (isMatch) {
-        req.session.currentUser = {
-          _id: foundUser._id,
-          name: foundUser.name,
-          email: foundUser.email
-        };
-        return res.redirect('/profile');
-      } else {
-        return res.render('accounts/login', {
+        if (err) return res.render('accounts/login', {
           errors: [{
-            message: 'Username or password is incorrect'
+            message: 'Something went wrong, please try again'
           }]
-        })
-      }
+        });
+  
+        if (isMatch) {
+          req.session.currentUser = {
+            _id: foundUser._id,
+            name: foundUser.name,
+            email: foundUser.email
+          };
+          return res.redirect('/profile');
+        } else {
+          return res.render('accounts/login', {
+            errors: [{
+              message: 'Username or password is incorrect'
+            }]
+          })
+        }
+      })
     });
   });
 }

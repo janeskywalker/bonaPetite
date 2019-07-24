@@ -49,6 +49,9 @@ app.get('/search',(req,res)=> {
   res.render('profile/search');
 })
 
+
+
+
 // acountes routes
 app.use('/accounts',routes.accounts);
 
@@ -57,7 +60,6 @@ app.use('/profile',routes.profile);
 
 
 // ------------------------------- API ENDPOINTS -------------------------------- //
-
 
 
 

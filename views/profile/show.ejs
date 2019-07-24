@@ -3,19 +3,19 @@
   <section class="profile login">
     <div class="">
       <h1>Welcome <%= currentUser && currentUser.name %></h1>
+      <h1><%= currentUser.plan %></h1>
     </div>
 
-   
+    <a class="create-new-plan-link" href="/profile/new">Create a new plan</a>
 
-    
-    <h2 class="plan-container" id="plan-container">242424244</h2>
- 
-    <input id="add-item-input">
-    
-    <button id="add-item-button">ADD ME</button>
+      <% for (const plan of currentUser.plans) { %>
+
+        <div class="plan">
+          <h3><%= plan.title %></h3>
+        </div>
+  
+      <% } %>
 
   </section>
-  
-  <section id="plan-container"></section>
 
 <% include ../partials/_footer.ejs %>

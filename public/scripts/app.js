@@ -4,6 +4,7 @@ const state = {
 
 const navLinks = document.querySelectorAll('nav li');
 const form = document.querySelector("form");
+
 // ADD NAV ACTIVE CLASS
 navLinks.forEach(link => {
   if (window.location.pathname === link.firstChild.getAttribute('href')) {

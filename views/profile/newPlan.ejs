@@ -1,0 +1,22 @@
+<% include ../partials/_head.ejs %>
+
+  <section class="profile login">
+    <div class="">
+      <h2>Welcome <%= currentUser && currentUser.name %></h2>
+      <h3>Create a new plan to be less fat</h3>
+    </div>
+
+    <form>
+        <input id="add-item-input">
+        <button id="add-item-button">ADD ME</button>
+    </form>
+
+    <div id="item-list">
+        <!-- Populate through JavaScript when you have search results -->
+        <!-- User clicks on one, add to work-in-progress plan -->
+        <!-- Button to submit work-in-progress plan (post to database) -->
+    </div>
+
+  </section>
+
+<% include ../partials/_footer.ejs %>
