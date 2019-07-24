@@ -1,12 +1,13 @@
 <% include ../partials/_head.ejs %>
 <script src="/scripts/newPlanPage.js"></script>
   <section class="profile login">
+    <h1 hidden id="currentUserId"><% currentUser._id%></h1>
     <div class="">
     </div>
     <form>
         <input id="add-item-input" placeholder="Title">
         <input type="text" id="calorieGoal" name="" value="" placeholder="Daily Calorie Goal">
-        <button id="create-plan" onclick=test()>Create</button>
+        <button id="create-plan" type="button" onclick=userId()>Create</button>
     </form>
 
     <div id="item-list">
