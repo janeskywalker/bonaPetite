@@ -1,23 +1,29 @@
 <% include ../partials/_head.ejs %>
-
-  <section class="profile login">
-    <div class="">
-      <h1>Welcome <%= currentUser && currentUser.name %></h1>
-      <h1><%= currentUser.plan %></h1>
-    </div>
-
-    <!-- user click on this link to make a new plan  -->
-    <a class="create-new-plan-link" href="/profile/newplan">Create a new plan</a>
-
-      <% for (const plan of currentUser.plans) { %>
-
-        <!-- render plans -->
-        <div class="plan">
-          <h3><%= plan.title %></h3>
-        </div>
-
-      <% } %>
-
-  </section>
-
+ <section class="profile login">
+   <div class="">
+     <h1>Welcome <%= currentUser && currentUser.name %></h1>
+   </div>
+   <!-- user click on this link to make a new plan  -->
+   <a class="create-new-plan-link" href="/profile/newplan">Create a new plan</a>
+     <% for (const plan of currentUser.plans) { %>
+       <!-- render plans -->
+       <div class="plan">
+         <h1>Plan for: <%= plan.title %></h1>
+         <% for (const item of plan.items) { %>
+           <div class="item-container">
+             <p class="plan-line">name: <%= item.name %></p>
+             <p class="plan-line">carbohydrate: <%= item.carbohydrate %></p>
+             <p class="plan-line">fat: <%= item.fat %></p>
+           </div>
+         <% } %>
+         <p class="plan-line">Calories:<%= plan.Calories %></p>
+       </div>
+     <% } %>
+   <h2 class="plan-container" id="plan-container"></h2>
+   <button type="button" id="displayPlans" name="button">Show Plans!</button>
+   <div id="plan-container"></div>
+   <h1>[...currentUser.plan][0].title</h1>
+   <h1>[...currentUser.plan][1].title</h1>
+   <h1>[...currentUser.plan][2].title</h1>
+ </section>
 <% include ../partials/_footer.ejs %>
