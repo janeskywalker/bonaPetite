@@ -39,19 +39,8 @@ document.addEventListener('focus',(e) => {
 }, true);
 
 // API testing for search functions
-const showPlans = document.querySelector('#showPlans');
-const search = document.querySelector('#search-name');
-showPlans.addEventListener('click', (e)=> {
-  let name = search.value;
-  $.ajax({
-    method:"GET",
-    url: `https://api.nal.usda.gov/ndb/search/?format=json&q=${name}&sort=n&max=3&offset=0&api_key=DEMO_KEY#`,
-    success: nameSearchSuccess,
-    error: (e1,e2,e3) => {
-      console.log(e2);
-    }
-  })
-})
+
+
 
 const plans = document.querySelector("#plans");
 
@@ -99,6 +88,10 @@ const itemInfoOnSuccess = (response) => {
     output[item.name] = [item.value]
   }
   console.log(output);
+}
+
+const test = () => {
+  console.log("hello");
 }
 
 //----------- Jane event listener --------------//

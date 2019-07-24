@@ -1,14 +1,12 @@
 <% include ../partials/_head.ejs %>
-
+<script src="/scripts/newPlanPage.js"></script>
   <section class="profile login">
     <div class="">
-      <h2>Welcome <%= currentUser && currentUser.name %></h2>
-      <h3>Create a new plan to be less fat</h3>
     </div>
-
     <form>
-        <input id="add-item-input">
-        <button id="add-item-button">ADD ME</button>
+        <input id="add-item-input" placeholder="Title">
+        <input type="text" id="calorieGoal" name="" value="" placeholder="Daily Calorie Goal">
+        <button id="create-plan" onclick=test()>Create</button>
     </form>
 
     <div id="item-list">
@@ -18,5 +16,4 @@
     </div>
 
   </section>
-
 <% include ../partials/_footer.ejs %>
