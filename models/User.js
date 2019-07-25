@@ -18,7 +18,7 @@ const UserSchema = new Schema({
   goal: {
     type: Number,
     default: 2000
-  }
+  },
   // embeded
   plans: [Plan.schema],
 

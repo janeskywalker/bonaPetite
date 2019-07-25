@@ -14,10 +14,29 @@ showPlans.addEventListener('click', (e)=> {
 
 const plans = document.querySelector("#plans");
 
-
+// when the user search with name of the item, append information
 const nameSearchSuccess = (response) => {
+
   for(item of response.list.item) {
-    console.log(item);
+    let itemValue = {};
+    const ndbno = item.ndbno;
+    $.ajax({
+      method:"GET",
+      url: `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${ndbno}&type=f&format=json&api_key=DEMO_KEY#`,
+      success: (response) => {
+        const nutrients = response.foods[0].food.nutrients;
+        const output = {};
+        for(item of nutrients) {
+          output[item.name] = [item.value]
+        }
+        itemValue = output;
+        console.log(itemValue);
+      },
+      error: (e1,e2,e3) => {
+        console.log(e2);
+      }
+    })
+
     plans.insertAdjacentHTML('beforeend',`
     <div>
     <table>
@@ -31,32 +50,29 @@ const nameSearchSuccess = (response) => {
     <th>${item.ndbno} </th>
     <tr>
     </tr>
-    <button class="addSelectedButton" id="${item.ndbno}"> Add </button>
     </table>
+    <div>Protein: ${itemValue.Protein}</div>
+    <div>Fat: ${itemValue["Total lipid (fat)"]}</div>
+    <div>Carbohydrate: ${itemValue["Carbohydrate, by difference"]}</div>
+
+    <button class="addSelectedButton" id="${item.ndbno}"> Add </button>
+
     </div>`);
     const itemButton = document.getElementById(`${item.ndbno}`);
 
-    itemButton.addEventListener('click', (e)=> {
-        const ndbno = e.target.id;
-      $.ajax({
-        method:"GET",
-        url: `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${ndbno}&type=f&format=json&api_key=DEMO_KEY#`,
-        success: itemInfoOnSuccess,
-        error: (e1,e2,e3) => {
-          console.log(e2);
-        }
-      })
-    })
+    // itemButton.addEventListener('click', (e)=> {
+    //
+    // })
 
   }
 
 }
 
-const itemInfoOnSuccess = (response) => {
-  const nutrients = response.foods[0].food.nutrients;
-  const output = {};
-  for(item of nutrients) {
-    output[item.name] = [item.value]
-  }
-  console.log(output);
-}
+// const itemInfoOnSuccess = (response) => {
+//   const nutrients = response.foods[0].food.nutrients;
+//   const output = {};
+//   for(item of nutrients) {
+//     output[item.name] = [item.value]
+//   }
+//   console.log(output);
+// }
