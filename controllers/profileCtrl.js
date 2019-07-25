@@ -92,11 +92,19 @@ const updateCalories = (req,res) => {
     })
 }
 
+const getItems = (req,res) => {
+
+  db.User.findById(req.session.currentUser._id, (e,foundUser) => {
+    console.log(foundUser.plans);
+  })
+}
+
 module.exports = {
   profile,
   newPlan,
   addNewPlan,
   newSearch,
-  updateCalories
+  updateCalories,
+  getItems
   //showPlan
 }

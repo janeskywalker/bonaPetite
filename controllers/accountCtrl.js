@@ -140,7 +140,8 @@ const createSession = (req, res) => {
           req.session.currentUser = {
             _id: foundUser._id,
             name: foundUser.name,
-            email: foundUser.email
+            email: foundUser.email,
+            item: foundUser.plans
           };
 
           // verified user, serve profile page
@@ -154,7 +155,7 @@ const createSession = (req, res) => {
         }
       })
     });
-    
+
 }
 
 

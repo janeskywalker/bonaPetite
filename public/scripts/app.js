@@ -38,30 +38,17 @@ document.addEventListener('focus',(e) => {
     inputMessage && inputMessage.parentNode.removeChild(inputMessage);
 }, true);
 
-// API testing for search functions
-
-
-
-
-
-const test = () => {
-  console.log("hello");
+const getAllItems = () => {
+  // $.ajax({
+  //   method: "GET",
+  //   url: "/getItems",
+  //   success: (response)=> {
+  //     console.log(response);
+  //   },
+  //   error: (e) => {
+  //     console.log(e);
+  //   }
+  // })
 }
 
-//----------- Jane event listener --------------//
-
-// const addItemInput = document.querySelector('#add-item-input')
-//
-// const addItemButton = document.querySelector('#add-item-button')
-//
-// console.log({addItemInput, addItemButton})
-//
-// addItemButton.addEventListener('click', (evt)=>{
-//     console.log(addItemInput.value)
-// })
-//
-// const planContainer = document.querySelector('#plan-container')
-//
-// planContainer.innerText = addItemInput.value
-//
-// console.log(planContainer)
+getAllItems();
