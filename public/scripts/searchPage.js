@@ -33,26 +33,33 @@ const nameSearchSuccess = (response) => {
       dataType: "json",
       success: (response) => {
         const nutrients = response.foods[0].food.nutrients;
+        console.log(nutrients);
         // const output = {measure:0};
         // console.log(nutrients);
         for(fact of nutrients) {
           if(fact.name == "Protein") {
             // Object.assign(itemValue, {Protein: fact.value});
-            itemValue.Protein = fact.value;
+            itemValue.protein = fact.value;
             // setItemValue(1,fact.value);
             // itemValue.push("Protein " + fact.value);
           }
           if(fact.name == "Total lipid (fat)") {
             // Object.assign(itemValue, {Fat: fact.value});
-            itemValue.Fat = fact.value;
+            itemValue.fat = fact.value;
             // setItemValue(2,fact.value);
             // itemValue.push("Fat " + fact.value);
           }
           if(fact.name == "Carbohydrate, by difference") {
             // Object.assign(itemValue, {Carbohydrate: fact.value});
-            itemValue.Carbohydrate = fact.value;
+            itemValue.carbohydrate = fact.value;
             // setItemValue(3,fact.value);
             // itemValue.push("Carb " + fact.value);
+          }
+          if(fact.name == "Energy") {
+            // Object.assign(itemValue, {Protein: fact.value});
+            itemValue.calories = fact.value;
+            // setItemValue(1,fact.value);
+            // itemValue.push("Protein " + fact.value);
           }
           // itemValue[fact.name] = [fact.value]
         }
@@ -66,7 +73,6 @@ const nameSearchSuccess = (response) => {
         console.log(e2);
       }
     })
-
     plans.insertAdjacentHTML('beforeend',`
     <div>
     <table>
@@ -81,9 +87,10 @@ const nameSearchSuccess = (response) => {
     <tr>
     </tr>
     </table>
-    <div>Protein: ${itemValue.Protein}</div>
-    <div>Fat: ${itemValue.Fat}</div>
-    <div>Carbohydrate:${itemValue.Carbohydrate}</div>
+    <div>Protein: ${itemValue.protein}</div>
+    <div>Fat: ${itemValue.fat} g</div>
+    <div>Carbohydrate:${itemValue.carbohydrate}</div>
+    <div>Calories:${itemValue.calories}</div>
 
     <button class="addSelectedButton" id="${item.ndbno}"> Add </button>
 
@@ -92,19 +99,20 @@ const nameSearchSuccess = (response) => {
 
     const itemFacts = {
       name:item.name,
-      Carbohydrate:itemValue.Carbohydrate,
-      fat:itemValue.Fat,
-      protein:itemValue.Protein
+      carbohydrate:itemValue.carbohydrate,
+      fat:itemValue.fat,
+      protein:itemValue.protein,
+      calories: itemValue.calories
     }
 
 
     itemButton.addEventListener('click', (e)=> {
-      currentItem = itemFacts;
+      // currentItem = itemFacts;
 
       $.ajax({
         method: "POST",
-        url: "/profile/newplan",
-        data: JSON.stringify(currentItem),
+        url: "/profile/newPlan",
+        data: JSON.stringify(itemFacts),
         contentType: 'application/json',
         success: ()=> {
           // document.getElementById(`${item.ndbno}`).style.display = none;

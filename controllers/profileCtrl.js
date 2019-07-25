@@ -11,9 +11,15 @@ const profile = (req,res) => {
     if (error) {
       return res.render('index',{errors: [{message:'User id is not found in database.'}]});
     }
+    let calories = 0;
+    for(item of foundUser.items) {
+      if(item.calories) {
+        calories += parseInt(item.calories);
+      }
+    }
     // console.log('currentUser: ', foundUser) temp
     // found user, render user name and plans
-    res.render('profile/show', { currentUser: foundUser });
+    res.render('profile/show', { currentUser: foundUser, calories });
   });
 }
 
@@ -60,7 +66,8 @@ const newSearch = (req, res) => {
 }
 
 const addNewPlan = (req,res) => {
-  const newPlan = req.body;
+  const newItem = req.body;
+  console.log(req.body)
   // db.User.findById({_id: req.body.id},(e,foundUser)=> {
   //   // if(e) return console.log(e);
   //   foundUser.push()
@@ -70,14 +77,12 @@ const addNewPlan = (req,res) => {
   // console.log({body:req.body.id});
   // req.session.currentUser._id
   userId = req.session.currentUser._id;
-  db.Plan.create(newPlan,(err,createdPlan)=> {
     db.User.findById(userId,(e,foundUser)=> {
-
-      foundUser.plans.push(newPlan);
+      console.log(newItem);
+      foundUser.items.push(newItem);
       foundUser.save()
       res.json({foundUser})
     })
-  })
 
 
 }
@@ -94,11 +99,35 @@ const updateCalories = (req,res) => {
 }
 
 
+const getItems = (req,res) => {
+ db.User.findById(req.session.currentUser._id, (e,foundUser) => {
+   console.log(foundUser.items);
+ })
+}
+const deleteItem = (req, res) => {
+ console.log("item id to delete", req.params.id)
+ console.log("currentUser.id", req.session.currentUser._id)
+ db.User.findById(req.session.currentUser._id, (e, foundUser) => {
+   console.log("curren user.items", foundUser.items)
+   foundUser.items.forEach((item,i)=>{
+     console.log('item id:', item._id)
+     if(item._id == req.params.id) {
+       console.log("found item:", item)
+       foundUser.items.splice(i,1);
+       foundUser.save()
+       res.sendStatus(200);
+     }
+   })
+ })
+ // return res.redirect('profile');
+}
 module.exports = {
-  profile,
-  newPlan,
-  addNewPlan,
-  newSearch,
-  updateCalories
-  //showPlan
+ profile,
+ newPlan,
+ addNewPlan,
+ newSearch,
+ updateCalories,
+ getItems,
+ deleteItem
+ //showPlan
 }

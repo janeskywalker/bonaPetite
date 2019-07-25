@@ -5,18 +5,21 @@
   </div>
   <!-- user click on this link to make a new plan  -->
   <a class="create-new-plan-link" href="/profile/newplan">Update Profile</a>
-  <% for (const item of currentUser.plans) { %>
+  <div id="progressBar"><progress value=<%= parseInt(calories) %> max=<%= currentUser.goal %>></div>
+  <% for (const item of currentUser.items) { %>
          <!-- render plans -->
          <div class="plan">
            <h1>Name: <%= item.name %></h1>
              <div class="item-container">
-               <p class="plan-line">Carbohydrate:<%= item.Carbohydrate %>g</p>
+               <p class="plan-line">Carbohydrate:<%= item.carbohydrate %>g</p>
                <p class="plan-line">Protein: <%= item.protein %>g</p>
                <p class="plan-line">fat: <%= item.fat %>g</p>
-               <p class="plan-line">Calorie: <%= item.calorie %></p>
+               <p class="plan-line">Calories: <%= item.calories %>kcal</p>
+               <% %>
              </div>
          </div>
          <button id=<%=item._id%>>Delete</button>
        <% } %>
 </section>
+<script src="/scripts/deleteItem.js"></script>
 <% include ../partials/_footer.ejs %>
