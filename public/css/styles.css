@@ -219,6 +219,16 @@ li.active a, nav li:hover a {
   border-radius: 30px;
 }
 
+
+.addSelectedButton{
+  background-color: orange;
+  font-size: 15px;
+}
+
+
+
+
+
 /* FOOTER */
 
 footer {
