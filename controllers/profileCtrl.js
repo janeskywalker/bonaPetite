@@ -39,11 +39,36 @@ const newPlan = (req, res) => {
   // });
 }
 
+const addNewPlan = (req,res) => {
+  const newPlan = req.body;
+  // db.User.findById({_id: req.body.id},(e,foundUser)=> {
+  //   // if(e) return console.log(e);
+  //   foundUser.push()
+  //   console.log("updating");
+  // })
+  //
+  // console.log({body:req.body.id});
+  // req.session.currentUser._id
+
+  db.Plan.create(newPlan.plan,(err,createdPlan)=> {
+    db.User.findById(req.body.id,(e,foundUser)=> {
+      // console.log(foundUser);
+      // console.log(foundUser.plans);
+
+      foundUser.plans.push(createdPlan);
+      foundUser.save()
+      res.json({foundUser})
+    })
+  })
+
+
+}
 
 
 
 module.exports = {
   profile,
   newPlan,
+  addNewPlan
   //showPlan
 }
