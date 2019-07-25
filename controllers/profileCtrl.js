@@ -12,6 +12,10 @@ const profile = (req,res) => {
       return res.render('index',{errors: [{message:'User id is not found in database.'}]});
     }
     console.log('currentUser: ', foundUser)
+
+    // A null was save to DB
+    // foundUser.plans = foundUser.plans.filter(next => next !== null)
+
     // found user, render user name and plans
     res.render('profile/show', { currentUser: foundUser });
   });
@@ -41,6 +45,8 @@ const newPlan = (req, res) => {
 
 const addNewPlan = (req,res) => {
   const newPlan = req.body;
+
+  console.log('newPlan: ', newPlan)
   // db.User.findById({_id: req.body.id},(e,foundUser)=> {
   //   // if(e) return console.log(e);
   //   foundUser.push()
@@ -57,11 +63,9 @@ const addNewPlan = (req,res) => {
 
       foundUser.plans.push(createdPlan);
       foundUser.save()
-      res.json({foundUser})
+      res.json({ foundUser })
     })
   })
-
-
 }
 
 
