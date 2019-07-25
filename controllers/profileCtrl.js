@@ -38,6 +38,26 @@ const newPlan = (req, res) => {
   //
   // });
 }
+// Render search page
+const newSearch = (req, res) => {
+  if(!req.session.currentUser) {
+    return res.redirect('/accounts/login');
+  } else {
+    console.log(req.session.currentUser);
+    res.render('profile/search', { currentUser: req.session.currentUser });
+  }
+  //
+  // console.log('New Plan')
+  //
+  // db.User.findById(req.session.currentUser._id, (error, foundUser) => {
+  //   if (error) {
+  //     return res.render('index',{errors: [{message:'User id is not found in database.'}]});
+  //   }
+  //   console.log(foundUser);
+  //   console.log('currentUser: ', foundUser)
+  //
+  // });
+}
 
 const addNewPlan = (req,res) => {
   const newPlan = req.body;
@@ -51,12 +71,7 @@ const addNewPlan = (req,res) => {
   // req.session.currentUser._id
   userId = req.session.currentUser._id;
   db.Plan.create(newPlan,(err,createdPlan)=> {
-
     db.User.findById(userId,(e,foundUser)=> {
-      console.log(foundUser);
-      console.log(".......................................................");
-      console.log(newPlan);
-      // console.log(foundUser.plans);
 
       foundUser.plans.push(newPlan);
       foundUser.save()
@@ -67,11 +82,21 @@ const addNewPlan = (req,res) => {
 
 }
 
-
+const updateCalories = (req,res) => {
+  const newGoal = req.body;
+  userId = req.session.currentUser._id;
+    db.User.findById(userId,(e,foundUser)=> {
+      foundUser.goal = (newGoal);
+      foundUser.save()
+      res.json({foundUser})
+    })
+}
 
 module.exports = {
   profile,
   newPlan,
-  addNewPlan
+  addNewPlan,
+  newSearch,
+  updateCalories
   //showPlan
 }

@@ -1,18 +1,10 @@
 <% include ../partials/_head.ejs %>
-<script src="/scripts/newPlanPage.js"></script>
   <section class="profile login">
     <div class="">
     </div>
     <form>
-        <input id="itemTitle" placeholder="Title">
-        <input id="item1" placeholder="Item1">
-        <input id="item1Calorie" placeholder="Item1 calorie">
-        <input id="item2" placeholder="Item2">
-        <input id="item1Calorie2" placeholder="Item2 calorie">
-        <input id="item3" placeholder="Item3">
-        <input id="item1Calorie3" placeholder="Item3 calorie">
-        <input type="text" id="calorieGoal" name="" value="" placeholder="Daily Calorie Goal">
-        <button id="create-plan" type="button" onclick=userId()>Create</button>
+        <input id="newGoal" placeholder="New Daily Calorie Goal">
+        <button id="updateButton" type="button">Update</button>
     </form>
 
     <div id="item-list">
@@ -22,4 +14,6 @@
     </div>
 
   </section>
+  <script src="/scripts/newPlanPage.js"></script>
+  
 <% include ../partials/_footer.ejs %>
