@@ -49,9 +49,9 @@ const addNewPlan = (req,res) => {
   //
   // console.log({body:req.body.id});
   // req.session.currentUser._id
-
-  db.Plan.create(newPlan.plan,(err,createdPlan)=> {
-    db.User.findById(req.body.id,(e,foundUser)=> {
+  userId = req.session.currentUser._id;
+  db.Plan.create(newPlan,(err,createdPlan)=> {
+    db.User.findById(userId,(e,foundUser)=> {
       // console.log(foundUser);
       // console.log(foundUser.plans);
 
