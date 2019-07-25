@@ -83,7 +83,8 @@ const addNewPlan = (req,res) => {
 }
 
 const updateCalories = (req,res) => {
-  const newGoal = req.body;
+  console.log(req.body)
+  const newGoal = req.body.goal;
   userId = req.session.currentUser._id;
     db.User.findById(userId,(e,foundUser)=> {
       foundUser.goal = (newGoal);
@@ -92,19 +93,12 @@ const updateCalories = (req,res) => {
     })
 }
 
-const getItems = (req,res) => {
-
-  db.User.findById(req.session.currentUser._id, (e,foundUser) => {
-    console.log(foundUser.plans);
-  })
-}
 
 module.exports = {
   profile,
   newPlan,
   addNewPlan,
   newSearch,
-  updateCalories,
-  getItems
+  updateCalories
   //showPlan
 }

@@ -7,5 +7,4 @@ router.get('/newplan', ctrls.profileCtrl.newPlan);
 router.post('/newplan', ctrls.profileCtrl.addNewPlan);
 router.post('/updateProfile', ctrls.profileCtrl.updateCalories);
 router.get('/search', ctrls.profileCtrl.newSearch);
-router.get('/getItems',ctrls.profileCtrl.getItems);
 module.exports = router;

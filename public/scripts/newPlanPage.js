@@ -7,7 +7,8 @@ updateButton.addEventListener('click', ()=> {
   $.ajax({
     method: "POST",
     url: "/profile/updateProfile",
-    data: value,
+    contentType: 'application/json',
+    data: JSON.stringify({goal: value}),
     success: console.log("ajax running, sent data:", value),
     error: (e) => {
       console.log(e);
