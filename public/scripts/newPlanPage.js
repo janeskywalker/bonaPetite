@@ -3,8 +3,6 @@ console.log("test");
 
 
 let userId = () => {
-  const currentUser = document.getElementById('currentUserId');
-  currentUserId = currentUser.innerText;
   const title = document.getElementById('itemTitle').value;
 
   const calorie = document.getElementById('calorieGoal').value;
@@ -13,13 +11,10 @@ let userId = () => {
   item3 = document.getElementById('item3').value + " " + document.getElementById('item3').value + " kcal"
 
   const newPlan = {
-    id: currentUserId,
-    plan: {
       title: title,
       items: [item1, item2, item3],
       Calories: calorie
     }
-  }
 
   $.ajax({
     method: "POST",
