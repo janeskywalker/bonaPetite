@@ -2,6 +2,13 @@ const showPlans = document.querySelector('#showPlans');
 const search = document.querySelector('#search-name');
 
 showPlans.addEventListener('click', (e) => {
+
+  //empty the search result when user clicks search again
+  const container = document.querySelector('#plans');
+  while(container.hasChildNodes()) {
+    container.removeChild(container.lastChild);
+  }
+
   let name = search.value;
   $.ajax({
     method: "GET",
@@ -11,7 +18,7 @@ showPlans.addEventListener('click', (e) => {
       console.log(e2);
     }
   })
-})
+});
 
 const plans = document.querySelector("#plans");
 const itemValue = {
@@ -100,4 +107,4 @@ const nameSearchSuccess = (response) => {
       })
     })
   }
-}
+};
