@@ -99,20 +99,20 @@ const nameSearchSuccess = (response) => {
 
     const itemFacts = {
       name:item.name,
-      carbohydrate:itemValue.Carbohydrate,
-      fat:itemValue.Fat,
-      protein:itemValue.Protein,
+      carbohydrate:itemValue.carbohydrate,
+      fat:itemValue.fat,
+      protein:itemValue.protein,
       calories: itemValue.calories
     }
 
 
     itemButton.addEventListener('click', (e)=> {
-      currentItem = itemFacts;
+      // currentItem = itemFacts;
 
       $.ajax({
         method: "POST",
         url: "/profile/newplan",
-        data: JSON.stringify(currentItem),
+        data: JSON.stringify(itemFacts),
         contentType: 'application/json',
         success: ()=> {
           // document.getElementById(`${item.ndbno}`).style.display = none;

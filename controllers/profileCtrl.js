@@ -67,6 +67,7 @@ const newSearch = (req, res) => {
 
 const addNewPlan = (req,res) => {
   const newPlan = req.body;
+  console.log(req.body)
   // db.User.findById({_id: req.body.id},(e,foundUser)=> {
   //   // if(e) return console.log(e);
   //   foundUser.push()
