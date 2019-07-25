@@ -26,7 +26,7 @@ const UserSchema = new Schema({
 	// 	}
   // ],
   
-  sign_up_date: {
+  signUpDate: {
     type: Date,
     default: Date.now
   }

@@ -9,7 +9,7 @@ let userId = () => {
 
   const item1 = {
     name: document.getElementById('item1').value,
-    calorie: document.getElementById('item1Calorie').value,
+    calories: document.getElementById('item1Calorie').value,
   }
   
   // const item2 = {
@@ -29,7 +29,7 @@ let userId = () => {
       // item2,
       // item3
     ],
-    Calories: calorie
+    calories: calorie
   }
 
   $.ajax({
