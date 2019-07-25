@@ -99,11 +99,35 @@ const updateCalories = (req,res) => {
 }
 
 
+const getItems = (req,res) => {
+ db.User.findById(req.session.currentUser._id, (e,foundUser) => {
+   console.log(foundUser.items);
+ })
+}
+const deleteItem = (req, res) => {
+ console.log("item id to delete", req.params.id)
+ console.log("currentUser.id", req.session.currentUser._id)
+ db.User.findById(req.session.currentUser._id, (e, foundUser) => {
+   console.log("curren user.items", foundUser.items)
+   foundUser.items.forEach((item,i)=>{
+     console.log('item id:', item._id)
+     if(item._id == req.params.id) {
+       console.log("found item:", item)
+       foundUser.items.splice(i,1);
+       foundUser.save()
+       res.sendStatus(200);
+     }
+   })
+ })
+ // return res.redirect('profile');
+}
 module.exports = {
-  profile,
-  newPlan,
-  addNewPlan,
-  newSearch,
-  updateCalories
-  //showPlan
+ profile,
+ newPlan,
+ addNewPlan,
+ newSearch,
+ updateCalories,
+ getItems,
+ deleteItem
+ //showPlan
 }
