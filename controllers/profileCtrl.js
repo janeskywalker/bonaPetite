@@ -12,7 +12,7 @@ const profile = (req,res) => {
       return res.render('index',{errors: [{message:'User id is not found in database.'}]});
     }
     let calories = 0;
-    for(item of foundUser.plans) {
+    for(item of foundUser.items) {
       if(item.calories) {
         calories += parseInt(item.calories);
       }
@@ -66,7 +66,7 @@ const newSearch = (req, res) => {
 }
 
 const addNewPlan = (req,res) => {
-  const newPlan = req.body;
+  const newItem = req.body;
   console.log(req.body)
   // db.User.findById({_id: req.body.id},(e,foundUser)=> {
   //   // if(e) return console.log(e);
@@ -77,10 +77,10 @@ const addNewPlan = (req,res) => {
   // console.log({body:req.body.id});
   // req.session.currentUser._id
   userId = req.session.currentUser._id;
-  db.Plan.create(newPlan,(err,createdPlan)=> {
+  db.Plan.create(newItem,(err,createdPlan)=> {
     db.User.findById(userId,(e,foundUser)=> {
-
-      foundUser.plans.push(newPlan);
+      console.log(newItem);
+      foundUser.items.push(newItem);
       foundUser.save()
       res.json({foundUser})
     })

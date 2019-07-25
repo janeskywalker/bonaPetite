@@ -111,7 +111,7 @@ const nameSearchSuccess = (response) => {
 
       $.ajax({
         method: "POST",
-        url: "/profile/newplan",
+        url: "/profile/updateProfile",
         data: JSON.stringify(itemFacts),
         contentType: 'application/json',
         success: ()=> {
