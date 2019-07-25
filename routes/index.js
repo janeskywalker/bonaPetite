@@ -1,5 +1,4 @@
-
 module.exports = {
-    accounts: require('./accounts'),
-    profile: require('./profile')
-}
+  accounts: require('./accounts'),
+  profile: require('./profile')
+};

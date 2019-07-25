@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 
 // --------------------- LOGIN -------------------- //
 
-
 // signup
 // serve New User Form
 const newUser = (req, res) => {
@@ -12,8 +11,6 @@ const newUser = (req, res) => {
 
 // post create new User
 const createUser = (req, res) => {
-
-  console.log("req.body", req.body)
 
   const errors = [];
   if (!req.body.name) {
@@ -78,13 +75,11 @@ const createUser = (req, res) => {
   });
 };
 
-
 // login
 // serve the login page
 const newSession = (req, res) => {
   res.render('accounts/login');
 }
-
 
 // POST Login
 // authentication, verify if the user is the the one claimed
@@ -130,34 +125,33 @@ const createSession = (req, res) => {
 
     bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
 
-        if (err) return res.render('accounts/login', {
+      if (err) return res.render('accounts/login', {
+        errors: [{
+          message: 'Something went wrong, please try again'
+        }]
+      });
+
+      if (isMatch) {
+        req.session.currentUser = {
+          _id: foundUser._id,
+          name: foundUser.name,
+          email: foundUser.email,
+          item: foundUser.plans
+        };
+
+        // verified user, serve profile page
+        return res.redirect('/profile');
+      } else {
+        return res.render('accounts/login', {
           errors: [{
-            message: 'Something went wrong, please try again'
+            message: 'Username or password is incorrect'
           }]
-        });
-
-        if (isMatch) {
-          req.session.currentUser = {
-            _id: foundUser._id,
-            name: foundUser.name,
-            email: foundUser.email,
-            item: foundUser.plans
-          };
-
-          // verified user, serve profile page
-          return res.redirect('/profile');
-        } else {
-          return res.render('accounts/login', {
-            errors: [{
-              message: 'Username or password is incorrect'
-            }]
-          })
-        }
-      })
-    });
+        })
+      }
+    })
+  });
 
 }
-
 
 //logout
 const deleteSession = (req, res) => {
@@ -171,10 +165,6 @@ const deleteSession = (req, res) => {
 
   res.redirect('/accounts/login')
 }
-
-
-
-
 
 module.exports = {
   newUser,

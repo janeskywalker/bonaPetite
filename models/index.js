@@ -5,9 +5,9 @@ mongoose.connect(DB_URL, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useCreateIndex: true
-}).then(()=> {
+}).then(() => {
   console.log(`MongoDB connected on port 27017`);
-}).catch((err)=> {
+}).catch((err) => {
   console.log(err);
 });
 

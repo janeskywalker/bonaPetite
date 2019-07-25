@@ -1,19 +1,11 @@
+const section = document.querySelector('section');
 
-
-const section = document.querySelector('section')
-
-//console.log(deleteButton.id)
-
-section.addEventListener('click', (e)=>{
-    //send a delete request to db
-
-
-    if( e.target.tagName === "BUTTON") {
-        console.log(e.target)
-    }
-
-
-    $.ajax({
+section.addEventListener('click', (e) => {
+  //send a delete request to db
+  if (e.target.tagName === "BUTTON") {
+    console.log(e.target)
+  }
+  $.ajax({
     method: 'DELETE',
     url: `/profile/${e.target.id}`,
     success: (response) => {
@@ -22,5 +14,4 @@ section.addEventListener('click', (e)=>{
     },
     error: (error) => console.log(error),
   });
-
-})
+});
