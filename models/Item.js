@@ -6,7 +6,8 @@ const ItemSchema = new Schema({
   carbohydrate: String,
   calories: String,
   protein: String,
-  fat: String
+  fat: String,
+  serving: String
 });
 
 const Item = mongoose.model('Item', ItemSchema);
