@@ -47,9 +47,9 @@ app.get('/',(req,res)=> {
   res.render('index');
 });
 
-app.get('/search',(req,res)=> {
-  res.render('profile/search');
-})
+// app.get('/search',(req,res)=> {
+//   res.render('profile/search');
+// })
 
 
 

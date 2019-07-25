@@ -80,7 +80,7 @@ const createUser = (req, res) => {
 
 
 // login
-// serve the login page 
+// serve the login page
 const newSession = (req, res) => {
   res.render('accounts/login');
 }
@@ -129,43 +129,22 @@ const createSession = (req, res) => {
     }
 
     bcrypt.compare(req.body.password, foundUser.password, (err, isMatch) => {
-      db.User.update({ _id: foundUser._id }, { plans: [{
-        title:"lunch",
-        items:[
-          {
-            name:"chicken",
-            carbohydrate:"15g",
-            fat:"1g"
-          },
-          {
-            name:"ketchup",
-            fat:"0g",
-            carbohydrate:"1g"
-          }
-        ],
-        Calories:"2kcal"
-      }, {
-        title:"dinner",
-        items:[],
-        Calories:"3kcal"
-      }]}, (err, raw) => {
-        console.log('err: ', err)
-        console.log('raw: ', raw)
 
         if (err) return res.render('accounts/login', {
           errors: [{
             message: 'Something went wrong, please try again'
           }]
         });
-  
+
         if (isMatch) {
           req.session.currentUser = {
             _id: foundUser._id,
             name: foundUser.name,
-            email: foundUser.email
+            email: foundUser.email,
+            item: foundUser.plans
           };
 
-          // verified user, serve profile page 
+          // verified user, serve profile page
           return res.redirect('/profile');
         } else {
           return res.render('accounts/login', {
@@ -176,7 +155,7 @@ const createSession = (req, res) => {
         }
       })
     });
-  });
+
 }
 
 

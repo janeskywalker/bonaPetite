@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-  name:String,
-  carbohydrate: String,
-  fat: String,
+  name: String,
+  calories: String,
   protein: String,
-  serving: String
+  fat: String,
+  Carbohydrate: String
 });
 
-const Item = mongoose.model('Item',ItemSchema);
+const Item = mongoose.model('Item', ItemSchema);
 
 module.exports = Item;

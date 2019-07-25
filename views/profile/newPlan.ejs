@@ -1,12 +1,10 @@
 <% include ../partials/_head.ejs %>
-<script src="/scripts/newPlanPage.js"></script>
   <section class="profile login">
     <div class="">
     </div>
     <form>
-        <input id="add-item-input" placeholder="Title">
-        <input type="text" id="calorieGoal" name="" value="" placeholder="Daily Calorie Goal">
-        <button id="create-plan" onclick=test()>Create</button>
+        <input id="newGoal" placeholder="New Daily Calorie Goal">
+        <button id="updateButton" type="button">Update</button>
     </form>
 
     <div id="item-list">
@@ -16,4 +14,6 @@
     </div>
 
   </section>
+  <script src="/scripts/newPlanPage.js"></script>
+  
 <% include ../partials/_footer.ejs %>

@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 const Item = require('./Item');
 
 const PlanSchema = new Schema({
-  title: String,
+  title: {type:String,default: "My Meal Plan"},
   items: [Item.schema],
-  Calories: String
+  calories: String
 });
 
 const Plan = mongoose.model('Plan',PlanSchema);

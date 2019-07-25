@@ -13,7 +13,7 @@ navLinks.forEach(link => {
 });
 
 form && form.addEventListener('submit', (e)=> {
-  [...document.querySelectorAll(`.alert`)].forEach(alert => {
+  [...document.querySelectorAll(".alert")].forEach(alert => {
       alert.parentNode.removeChild(alert);
   });
 
@@ -38,76 +38,17 @@ document.addEventListener('focus',(e) => {
     inputMessage && inputMessage.parentNode.removeChild(inputMessage);
 }, true);
 
-// API testing for search functions
-
-
-
-const plans = document.querySelector("#plans");
-
-const nameSearchSuccess = (response) => {
-  for(item of response.list.item) {
-    console.log(item);
-    plans.insertAdjacentHTML('beforeend',`
-    <div>
-    <table>
-    <tr>
-    <th>Name</th>
-    <th>Company</th>
-    <th>Ndbno</th>
-    </tr>
-    <th>${item.manu}</th>
-    <th>${item.name}</th>
-    <th>${item.ndbno} </th>
-    <tr>
-    </tr>
-    <button class="addSelectedButton" id="${item.ndbno}"> Add </button>
-    </table>
-    </div>`);
-    const itemButton = document.getElementById(`${item.ndbno}`);
-
-    itemButton.addEventListener('click', (e)=> {
-        const ndbno = e.target.id;
-      $.ajax({
-        method:"GET",
-        url: `https://api.nal.usda.gov/ndb/V2/reports?ndbno=${ndbno}&type=f&format=json&api_key=DEMO_KEY#`,
-        success: itemInfoOnSuccess,
-        error: (e1,e2,e3) => {
-          console.log(e2);
-        }
-      })
-    })
-
-  }
-
+const getAllItems = () => {
+  // $.ajax({
+  //   method: "GET",
+  //   url: "/getItems",
+  //   success: (response)=> {
+  //     console.log(response);
+  //   },
+  //   error: (e) => {
+  //     console.log(e);
+  //   }
+  // })
 }
 
-const itemInfoOnSuccess = (response) => {
-  const nutrients = response.foods[0].food.nutrients;
-  const output = {};
-  for(item of nutrients) {
-    output[item.name] = [item.value]
-  }
-  console.log(output);
-}
-
-const test = () => {
-  console.log("hello");
-}
-
-//----------- Jane event listener --------------//
-
-// const addItemInput = document.querySelector('#add-item-input')
-//
-// const addItemButton = document.querySelector('#add-item-button')
-//
-// console.log({addItemInput, addItemButton})
-//
-// addItemButton.addEventListener('click', (evt)=>{
-//     console.log(addItemInput.value)
-// })
-//
-// const planContainer = document.querySelector('#plan-container')
-//
-// planContainer.innerText = addItemInput.value
-//
-// console.log(planContainer)
+getAllItems();
