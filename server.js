@@ -12,7 +12,6 @@ const routes = require('./routes');
 app.set('view engine', 'ejs');
 
 // ------------------------------- MIDDLEWARE  -------------------------------- //
-
 // Serve Public Directory
 app.use(express.static(`${__dirname}/public`));
 
