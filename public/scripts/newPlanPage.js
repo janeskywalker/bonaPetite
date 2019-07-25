@@ -1,13 +1,14 @@
 
 const updateButton = document.querySelector('#updateButton');
 updateButton.addEventListener('click', ()=> {
-  const title = document.getElementById('newGoal').value;
+  const value = document.getElementById('newGoal').value;
+  console.log(value);
   console.log("button working");
   $.ajax({
     method: "POST",
     url: "/profile/updateProfile",
-    data: title,
-    success: console.log("ajax running, sent data:", title),
+    data: value,
+    success: console.log("ajax running, sent data:", value),
     error: (e) => {
       console.log(e);
     }
