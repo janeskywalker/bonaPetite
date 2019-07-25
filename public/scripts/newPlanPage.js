@@ -11,8 +11,8 @@ let userId = () => {
   item3 = document.getElementById('item3').value + " " + document.getElementById('item3').value + " kcal"
 
   const newPlan = {
-      title: title,
       items: [item1, item2, item3],
+      title: title,
       Calories: calorie
     }
 

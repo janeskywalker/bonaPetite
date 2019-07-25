@@ -5,13 +5,13 @@ const profile = (req,res) => {
   if(!req.session.currentUser) {
     return res.redirect('/accounts/login');
   }
-  console.log('Profile')
+  // console.log('Profile') temp
 
   db.User.findById(req.session.currentUser._id, (error, foundUser) => {
     if (error) {
       return res.render('index',{errors: [{message:'User id is not found in database.'}]});
     }
-    console.log('currentUser: ', foundUser)
+    // console.log('currentUser: ', foundUser) temp
     // found user, render user name and plans
     res.render('profile/show', { currentUser: foundUser });
   });
@@ -51,11 +51,14 @@ const addNewPlan = (req,res) => {
   // req.session.currentUser._id
   userId = req.session.currentUser._id;
   db.Plan.create(newPlan,(err,createdPlan)=> {
+
     db.User.findById(userId,(e,foundUser)=> {
-      // console.log(foundUser);
+      console.log(foundUser);
+      console.log(".......................................................");
+      console.log(newPlan);
       // console.log(foundUser.plans);
 
-      foundUser.plans.push(createdPlan);
+      foundUser.plans.push(newPlan);
       foundUser.save()
       res.json({foundUser})
     })
