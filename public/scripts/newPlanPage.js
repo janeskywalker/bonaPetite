@@ -1,50 +1,33 @@
-// console.log(currentUser);
-console.log("test");
 
-
-let userId = () => {
-  const title = document.getElementById('itemTitle').value;
-
-  const calorie = document.getElementById('calorieGoal').value
-
-  const item1 = {
-    name: document.getElementById('item1').value,
-    calories: document.getElementById('item1Calorie').value,
-  }
-  
-  // const item2 = {
-  //   name: document.getElementById('item2').value,
-  //   calorie: document.getElementById('item2Calorie').value + " kcal",
-  // }
-
-  // const item3 = {
-  //   name: document.getElementById('item3').value,
-  //   calorie: document.getElementById('item3Calorie').value + " kcal",
-  // }
-
-  const newPlan = {
-    title: title,
-    items: [
-      item1,
-      // item2,
-      // item3
-    ],
-    calories: calorie
-  }
-
+const updateButton = document.querySelector('#updateButton');
+updateButton.addEventListener('click', ()=> {
+  const value = document.getElementById('newGoal').value;
+  console.log(value);
+  console.log("button working");
   $.ajax({
     method: "POST",
-    url: "/profile/newplan",
-    data: JSON.stringify(newPlan),
-    contentType: 'application/json',
-    success: () => {
-        console.log("New plan published: ", newPlan)
-        window.location.href = '/profile'
-    },
+    url: "/profile/updateProfile",
+    data: value,
+    success: console.log("ajax running, sent data:", value),
     error: (e) => {
       console.log(e);
     }
   })
+})
 
-
-}
+// let updateProfile = () => {
+//   const title = document.getElementById('newGoal').value;
+//   console.log("button working");
+//   $.ajax({
+//     method: "POST",
+//     url: "/profile/updateProfile",
+//     data: JSON.stringify(title),
+//     contentType: 'application/json',
+//     success: console.log("ajax running: ", newPlan),
+//     error: (e) => {
+//       console.log(e);
+//     }
+//   })
+//
+//
+// }

@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Plan = require('./Plan');
+const Item = require('./Item');
 
 const UserSchema = new Schema({
   name: {
@@ -15,18 +16,22 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
-  // embeded 
-  plans: [Plan.schema],
+  goal: {
+    type: Number,
+    default: 2000
+  },
+  // embeded
+  plans: [Item.schema],
 
   // plans: [
 	// 	{
 	// 		type: Schema.Types.ObjectId,
-	// 		// collection 
+	// 		// collection
 	// 		ref: 'Plan'
 	// 	}
   // ],
-  
-  signUpDate: {
+
+  sign_up_date: {
     type: Date,
     default: Date.now
   }
