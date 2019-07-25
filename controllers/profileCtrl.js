@@ -77,14 +77,12 @@ const addNewPlan = (req,res) => {
   // console.log({body:req.body.id});
   // req.session.currentUser._id
   userId = req.session.currentUser._id;
-  db.Plan.create(newItem,(err,createdPlan)=> {
     db.User.findById(userId,(e,foundUser)=> {
       console.log(newItem);
       foundUser.items.push(newItem);
       foundUser.save()
       res.json({foundUser})
     })
-  })
 
 
 }
