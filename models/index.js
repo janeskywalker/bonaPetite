@@ -13,6 +13,5 @@ mongoose.connect(DB_URL, {
 
 module.exports = {
   Item: require('./Item'),
-  Plan: require('./Plan'),
   User: require('./User')
 };

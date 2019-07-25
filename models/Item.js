@@ -3,10 +3,11 @@ const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
   name: String,
+  carbohydrate: String,
   calories: String,
   protein: String,
   fat: String,
-  Carbohydrate: String
+  serving: String
 });
 
 const Item = mongoose.model('Item', ItemSchema);

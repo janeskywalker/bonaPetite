@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const Plan = require('./Plan');
 const Item = require('./Item');
 
 const UserSchema = new Schema({
@@ -21,7 +20,7 @@ const UserSchema = new Schema({
     default: 2000
   },
   // embeded
-  plans: [Item.schema],
+  items: [Item.schema],
 
   // plans: [
 	// 	{
