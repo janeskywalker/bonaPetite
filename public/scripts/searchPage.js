@@ -32,7 +32,7 @@ const nameSearchSuccess = (response) => {
       dataType: "json",
       success: (response) => {
         const nutrients = response.foods[0].food.nutrients;
-        itemValue.serving = `${nutrients[0].measures[0].qty} ${nutrients[0].measures[0].label} or ${nutrients[0].measures[0].value}${nutrients[0].measures[0].eunit}`;
+        itemValue.serving = `(${nutrients[0].measures[0].qty} ${nutrients[0].measures[0].label}) or (${nutrients[0].measures[0].value}${nutrients[0].measures[0].eunit})`;
         for (fact of nutrients) {
           if (fact.name == "Protein") {
             itemValue.protein = fact.value;
