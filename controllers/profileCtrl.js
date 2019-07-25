@@ -11,9 +11,15 @@ const profile = (req,res) => {
     if (error) {
       return res.render('index',{errors: [{message:'User id is not found in database.'}]});
     }
+    let calories = 0;
+    for(item of foundUser.plans) {
+      if(item.calories) {
+        calories += parseInt(item.calories);
+      }
+    }
     // console.log('currentUser: ', foundUser) temp
     // found user, render user name and plans
-    res.render('profile/show', { currentUser: foundUser });
+    res.render('profile/show', { currentUser: foundUser, calories });
   });
 }
 
