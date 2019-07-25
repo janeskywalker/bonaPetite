@@ -4,7 +4,6 @@
     <h1>Welcome <%= currentUser && currentUser.name %></h1>
   </div>
   <!-- user click on this link to make a new plan  -->
-  <a class="create-new-plan-link" href="/profile/newplan">Update Profile</a>
   <div id="progressBar"><progress value=<%= parseInt(calories) %> max=<%= currentUser.goal %>></div>
   <% for (const item of currentUser.items) { %>
          <!-- render plans -->

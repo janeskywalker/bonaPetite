@@ -33,7 +33,7 @@ const nameSearchSuccess = (response) => {
       dataType: "json",
       success: (response) => {
         const nutrients = response.foods[0].food.nutrients;
-        console.log(nutrients);
+        console.log(`${nutrients[0].measures[0].qty} ${nutrients[0].measures[0].label} or ${nutrients[0].measures[0].value}${nutrients[0].measures[0].eunit}`);
         // const output = {measure:0};
         // console.log(nutrients);
         for(fact of nutrients) {
@@ -91,6 +91,7 @@ const nameSearchSuccess = (response) => {
     <div>Fat: ${itemValue.fat} g</div>
     <div>Carbohydrate:${itemValue.carbohydrate}</div>
     <div>Calories:${itemValue.calories}</div>
+    <div>Serving size: n/a atm </div>
 
     <button class="addSelectedButton" id="${item.ndbno}"> Add </button>
 
@@ -102,7 +103,7 @@ const nameSearchSuccess = (response) => {
       carbohydrate:itemValue.carbohydrate,
       fat:itemValue.fat,
       protein:itemValue.protein,
-      calories: itemValue.calories
+      calories: itemValue.calories,
     }
 
 
