@@ -216,15 +216,45 @@ li.active a, nav li:hover a {
 #plans {
   background-color: ghostwhite;
   margin: 5em;
-  border-radius: 30px;
+  border-radius: 30px; 
+
+
+
+
 }
 
 
 .addSelectedButton{
+  /* background-color: orange;
+  font-size: 20px; */
+
   background-color: orange;
-  font-size: 15px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  padding: 0.5em;
+
+
+
+
 }
 
+
+.item-delete-button {
+  /* background-color: orange;
+  font-size: 20px;
+  color: white; */
+
+  background-color: orange;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 17px;
+  padding: 0.5em;
+}
 
 
 
