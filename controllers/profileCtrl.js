@@ -25,30 +25,28 @@ const profile = (req, res) => {
       calories
     });
   });
-}
+};
 
 // render newPlan page
 const newPlan = (req, res) => {
   if (!req.session.currentUser) {
     return res.redirect('/accounts/login');
   } else {
-    console.log(req.session.currentUser);
     res.render('profile/newPlan', {
       currentUser: req.session.currentUser
     });
   }
-}
+};
 // Render search page
 const newSearch = (req, res) => {
   if (!req.session.currentUser) {
     return res.redirect('/accounts/login');
   } else {
-    console.log(req.session.currentUser);
     res.render('profile/search', {
       currentUser: req.session.currentUser
     });
   }
-}
+};
 
 const addNewPlan = (req, res) => {
   const newItem = req.body;
@@ -61,10 +59,9 @@ const addNewPlan = (req, res) => {
       foundUser
     })
   })
-}
+};
 
 const updateCalories = (req, res) => {
-  console.log(req.body)
   const newGoal = req.body.goal;
   userId = req.session.currentUser._id;
   db.User.findById(userId, (e, foundUser) => {
@@ -74,13 +71,14 @@ const updateCalories = (req, res) => {
       foundUser
     })
   })
-}
+};
 
 const getItems = (req, res) => {
   db.User.findById(req.session.currentUser._id, (e, foundUser) => {
     console.log(foundUser.items);
   })
-}
+};
+
 const deleteItem = (req, res) => {
   console.log("item id to delete", req.params.id)
   console.log("currentUser.id", req.session.currentUser._id)
@@ -96,8 +94,7 @@ const deleteItem = (req, res) => {
       }
     })
   })
-}
-
+};
 module.exports = {
   profile,
   newPlan,
@@ -106,4 +103,4 @@ module.exports = {
   updateCalories,
   getItems,
   deleteItem
-}
+};

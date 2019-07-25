@@ -10,7 +10,7 @@ router.get('/getItems',ctrls.profileCtrl.getItems);
 // Post routes
 router.post('/newplan', ctrls.profileCtrl.addNewPlan);
 router.post('/updateProfile', ctrls.profileCtrl.updateCalories);
-// Delete routes
+// Delete route
 router.delete('/:id', ctrls.profileCtrl.deleteItem);
 
 module.exports = router;
