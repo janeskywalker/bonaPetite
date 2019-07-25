@@ -19,17 +19,7 @@ const UserSchema = new Schema({
     type: Number,
     default: 2000
   },
-  // embeded
   items: [Item.schema],
-
-  // plans: [
-	// 	{
-	// 		type: Schema.Types.ObjectId,
-	// 		// collection
-	// 		ref: 'Plan'
-	// 	}
-  // ],
-
   sign_up_date: {
     type: Date,
     default: Date.now

@@ -18,7 +18,7 @@ showPlans.addEventListener('click', (e) => {
       console.log(e2);
     }
   })
-})
+});
 
 const plans = document.querySelector("#plans");
 const itemValue = {
@@ -107,4 +107,4 @@ const nameSearchSuccess = (response) => {
       })
     })
   }
-}
+};
