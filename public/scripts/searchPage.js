@@ -9,11 +9,11 @@ showPlans.addEventListener('click', (e) => {
     container.removeChild(container.lastChild);
   }
 
-  // make the first get request to external api (USDA), launching an general search to get ingredients ndbno 
+  // make the first get request to external api (USDA), launching an general search to get ingredients ndbno
   let name = search.value;
   $.ajax({
     method: "GET",
-    url: `https://api.nal.usda.gov/ndb/search/?format=json&q=${name}&sort=n&max=3&offset=0&api_key=qybBwBIXCzpjN5fsqtBZXHTfMscteYbRU1Z2oC7Z`,
+    url: `https://api.nal.usda.gov/ndb/search/?format=json&q=${name}&sort=n&max=4&offset=0&api_key=qybBwBIXCzpjN5fsqtBZXHTfMscteYbRU1Z2oC7Z`,
     success: nameSearchSuccess,
     error: (e1, e2, e3) => {
       console.log(e2);
