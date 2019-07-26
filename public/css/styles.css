@@ -251,9 +251,6 @@ progress::after {
   font-size: 17px;
   padding: 0.5em;
 
-
-
-
 }
 
 
@@ -273,7 +270,13 @@ progress::after {
 
 
 
-
+.login-greeting {
+  background-color: rgb(154, 238, 97);
+  padding: 0 5%;
+  width: 61%;
+  margin: 0 auto;
+  text-align: center;
+}
 
 
 
