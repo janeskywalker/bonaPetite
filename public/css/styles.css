@@ -319,3 +319,8 @@ footer {
   background-repeat: no-repeat;
 
 }
+
+.logo {
+  text-decoration: none;
+  color: black;
+}

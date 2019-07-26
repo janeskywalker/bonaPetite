@@ -1,8 +1,7 @@
 const updateButton = document.querySelector('#updateButton');
 updateButton.addEventListener('click', () => {
   const value = document.getElementById('newGoal').value;
-  console.log(value);
-  console.log("button working");
+  
   $.ajax({
     method: "POST",
     url: "/profile/updateProfile",
