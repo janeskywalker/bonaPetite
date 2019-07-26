@@ -120,7 +120,7 @@ const createSession = (req, res) => {
           _id: foundUser._id,
           name: foundUser.name,
           email: foundUser.email,
-          item: foundUser.plans
+          item: foundUser.items
         };
         // verified user, serve profile page
         return res.redirect('/profile');

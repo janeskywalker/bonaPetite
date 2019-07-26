@@ -3,10 +3,11 @@
 <main class="main-content">
   <section class="profile login">
     <div class="">
-      <h1>Welcome <%= currentUser && currentUser.name %></h1>
     </div>
     <!-- user click on this link to make a new plan  -->
+    <h3 class="profileTitle">Total Calories Consumption</h3>
     <div id="progressBar"><progress value=<%= parseInt(calories) %> max=<%= currentUser.goal %>></div>
+    <h3 id="foodTitle" class="profileTitle">Food </h3>
     <% for (const item of currentUser.items) { %>
     <!-- render plans -->
     <div class="plan">
@@ -22,7 +23,7 @@
 
       <button class="item-delete-button" id=<%=item._id%>>Delete</button>
     </div>
-    
+
         <% } %>
 
   </section>
