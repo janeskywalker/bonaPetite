@@ -298,7 +298,6 @@ footer {
 }
 
 #getStarted {
-  z-index: 1;
   position: absolute;
   text-decoration: none;
   text-transform: none;
@@ -313,9 +312,8 @@ footer {
 
 
 #indexPage {
-  background-image: url("https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&auto=format&fit=crop&w=2131&q=80");
+  background-image: url("/assets/index-background.jpg");
   background-size: cover;
-  z-index: -1;
   position: relative;
 
 }
