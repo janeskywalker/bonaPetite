@@ -10,7 +10,6 @@ const newUser = (req, res) => {
 
 // post create new User
 const createUser = (req, res) => {
-  console.log("req.body", req.body)
   const errors = [];
   if (!req.body.name) {
     errors.push({
