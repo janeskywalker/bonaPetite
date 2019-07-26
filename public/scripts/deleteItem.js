@@ -5,6 +5,7 @@ section.addEventListener('click', (e) => {
   if (e.target.tagName === "BUTTON") {
     console.log(e.target)
   }
+  
   $.ajax({
     method: 'DELETE',
     url: `/profile/${e.target.id}`,
