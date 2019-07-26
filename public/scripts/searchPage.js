@@ -9,6 +9,7 @@ showPlans.addEventListener('click', (e) => {
     container.removeChild(container.lastChild);
   }
 
+  // make the first get request to external api (USDA), launching an general search to get ingredients ndbno 
   let name = search.value;
   $.ajax({
     method: "GET",
@@ -29,6 +30,8 @@ const itemValue = {
 };
 
 // when the user search with name of the item, append information
+
+// on seccess of the first get request api call, grab the ndbno and search for ingredients nutrients facts
 const nameSearchSuccess = (response) => {
 
   for (item of response.list.item) {
@@ -92,6 +95,7 @@ const nameSearchSuccess = (response) => {
       serving: itemValue.serving
     }
 
+    // on success, send a post request to db for adding a plan(items)
     itemButton.addEventListener('click', (e) => {
       $.ajax({
         method: "POST",

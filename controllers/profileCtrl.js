@@ -48,6 +48,7 @@ const newSearch = (req, res) => {
   }
 };
 
+// user add items to the plan(items)
 const addNewPlan = (req, res) => {
   const newItem = req.body;
   userId = req.session.currentUser._id;
@@ -79,15 +80,16 @@ const getItems = (req, res) => {
   })
 };
 
+// user delete items from the plan(items)
 const deleteItem = (req, res) => {
-  console.log("item id to delete", req.params.id)
-  console.log("currentUser.id", req.session.currentUser._id)
+  // console.log("item id to delete", req.params.id)
+  // console.log("currentUser.id", req.session.currentUser._id)
   db.User.findById(req.session.currentUser._id, (e, foundUser) => {
-    console.log("curren user.items", foundUser.items)
+    // console.log("curren user.items", foundUser.items)
     foundUser.items.forEach((item, i) => {
-      console.log('item id:', item._id)
+      // console.log('item id:', item._id)
       if (item._id == req.params.id) {
-        console.log("found item:", item)
+        // console.log("found item:", item)
         foundUser.items.splice(i, 1);
         foundUser.save()
         res.sendStatus(200);
@@ -95,6 +97,7 @@ const deleteItem = (req, res) => {
     })
   })
 };
+
 module.exports = {
   profile,
   newPlan,
