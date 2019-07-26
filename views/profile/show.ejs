@@ -1,28 +1,32 @@
 <% include ../partials/_head.ejs %>
 
-<section class="profile login">
-  <div class="">
-    <h1>Welcome <%= currentUser && currentUser.name %></h1>
-  </div>
-  <!-- user click on this link to make a new plan  -->
-  <div id="progressBar"><progress value=<%= parseInt(calories) %> max=<%= currentUser.goal %>></div>
-  <% for (const item of currentUser.items) { %>
-  <!-- render plans -->
-  <div class="plan">
-    <h1>Name: <%= item.name %></h1>
-    <div class="item-container">
-      <p class="plan-line">Carbohydrate:<%= item.carbohydrate %>g</p>
-      <p class="plan-line">Protein: <%= item.protein %>g</p>
-      <p class="plan-line">fat: <%= item.fat %>g</p>
-      <p class="plan-line">Calories: <%= item.calories %>kcal</p>
-      <p class="plan-line">Serving size: <%= item.serving %></p>
-      <% %>
-             </div>
-         </div>
-         <button class="item-delete-button" id=<%=item._id%>>Delete</button>
-       <% } %>
+<main class="main-content">
+  <section class="profile login">
+    <div class="">
+      <h1>Welcome <%= currentUser && currentUser.name %></h1>
+    </div>
+    <!-- user click on this link to make a new plan  -->
+    <div id="progressBar"><progress value=<%= parseInt(calories) %> max=<%= currentUser.goal %>></div>
+    <% for (const item of currentUser.items) { %>
+    <!-- render plans -->
+    <div class="plan">
+      <h1>Name: <%= item.name %></h1>
+      <div class="item-container">
+        <p class="plan-line">Carbohydrate:<%= item.carbohydrate %>g</p>
+        <p class="plan-line">Protein: <%= item.protein %>g</p>
+        <p class="plan-line">fat: <%= item.fat %>g</p>
+        <p class="plan-line">Calories: <%= item.calories %>kcal</p>
+        <p class="plan-line">Serving size: <%= item.serving %></p>
+        <% %>
+      </div>
 
-</section>
+      <button class="item-delete-button" id=<%=item._id%>>Delete</button>
+    </div>
+    
+        <% } %>
+
+  </section>
+</main>
 <script src="/scripts/deleteItem.js"></script>
 
 <% include ../partials/_footer.ejs %>
