@@ -307,8 +307,8 @@ footer {
   color: black;
   font-size: 25px;
   padding: 24px 50px 24px 50px;
-  top: 500px;
-  right: 300px;
+  top: 53%;
+  right: 22%;
 }
 
 
@@ -323,4 +323,22 @@ footer {
 .logo {
   text-decoration: none;
   color: black;
+}
+
+#logInText {
+  position: absolute;
+  top: 62%;
+  right: 23%;
+}
+
+#smallLogin {
+  text-decoration: none;
+  color: blue;
+}
+
+#indexInfo {
+  position: absolute;
+  top: 37%;
+  right: 18%;
+  font-size: 40px;
 }
