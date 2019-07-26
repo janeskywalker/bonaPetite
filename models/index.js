@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const DB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/bonapetite';
+const mongoURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/bonapetite';
 
-mongoose.connect(DB_URL, {
+mongoose.connect(MONGO_URL, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useCreateIndex: true
