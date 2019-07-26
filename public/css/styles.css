@@ -249,7 +249,7 @@ progress::after {
   display: inline-block;
   font-size: 17px;
   padding: 0.5em;
-
+  border-radius: 10px;
 }
 
 
@@ -265,6 +265,7 @@ progress::after {
   display: inline-block;
   font-size: 17px;
   padding: 0.5em;
+  border-radius: 10px;
 }
 
 
