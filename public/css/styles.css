@@ -128,7 +128,7 @@ li.active a, nav li:hover a {
 }
 
 .wrapper  {
-  background-image: url("https://images.unsplash.com/photo-1495195129352-aeb325a55b65?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1510&q=80");
+  background-image: url("/assets/background-img.jpg");
   background-repeat: no-repeat;
   background-position: 0 0;
   background-size: cover;
@@ -185,13 +185,15 @@ nav {
 
 
 
-#search-name {
-  width: 50%;
+#newGoal, #search-name {
+  width: 100%;
   margin: auto 0;
   border-radius: 10px;
 }
 
-#showPlans {
+
+
+#updateButton, #showPlans {
   background-color: orange;
   border-radius: 10px;
   color: white;
@@ -202,14 +204,25 @@ nav {
   font-size: 15px;
 }
 
+
+
+
+
+
 #plans {
   background-color: ghostwhite;
-  margin: 5em;
+  padding: 1em;
+  opacity: 0.8;
+  margin: 1em;
   border-radius: 30px; 
+}
 
+#plans:empty {
+  padding: 0;
+}
 
-
-
+.search-result {
+  margin: 0 0 20px 0;
 }
 
 

@@ -61,7 +61,7 @@ const nameSearchSuccess = (response) => {
       }
     })
     plans.insertAdjacentHTML('beforeend', `
-    <div>
+    <div class="search-result">
     <table>
     <tr>
     <th>Name</th>
