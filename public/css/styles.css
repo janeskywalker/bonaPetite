@@ -315,5 +315,6 @@ footer {
   background-image: url("/assets/index-background.jpg");
   background-size: cover;
   position: relative;
+  background-repeat: no-repeat;
 
 }
